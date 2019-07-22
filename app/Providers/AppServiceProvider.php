@@ -2,6 +2,8 @@
 
 namespace DemoLaravel\Providers;
 
+use DemoLaravel\About;
+use DemoLaravel\Contact;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $data['about'] = About::all();
+        $data['contact'] = Contact::all();
+
+        view()->share($data);
     }
 }

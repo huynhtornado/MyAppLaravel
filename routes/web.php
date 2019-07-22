@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index')->name('home');
+
 
 // Route::get('/table/{number?}', function($number = 3) {
 //     for ($i = 1; $i <= 10; $i++) {
