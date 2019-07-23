@@ -1,7 +1,9 @@
 @include('layouts.header')
 
 <body>
-    @yield('content')
+    <!-- END COLORLIB-ASIDE -->
+    <div id="colorlib-main">
+        @yield('content')
+        @include('layouts.footer')
+    </div><!-- END COLORLIB-PAGE -->
 </body>
-
-@include('layouts.footer')
