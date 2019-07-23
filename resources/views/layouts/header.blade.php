@@ -5,14 +5,11 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/album/">
-    <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="css/album.css" />
+    <title>{{ trans('global.title_home') }}</title>
+    <link rel="stylesheet" href="{{ trans('global.style_app') }}" />
+    <link rel="stylesheet" href="{{ trans('global.style_album') }}" />
 
 </head>
-
 <body>
     <header>
         <div class="navbar navbar-dark bg-dark shadow-sm">
@@ -27,10 +24,10 @@
                     </svg>
                     <strong>Album</strong>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div>
+                    <a href="#"><button type="submit" class="btn btn-secondary">{{ trans('global.register')}}</button></a>
+                    <a href="{{ route('login') }}"><button type="submit" class="btn btn-success">{{ trans('global.login')}}</button></a>
+                </div>
             </div>
         </div>
     </header>

@@ -3,8 +3,9 @@
 namespace DemoLaravel\Http\Middleware;
 
 use Closure;
+use Auth;
 
-class AgeMiddleware
+class CheckLogin
 {
     /**
      * Handle an incoming request.
@@ -15,6 +16,7 @@ class AgeMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (Auth::check())
         return $next($request);
     }
 }

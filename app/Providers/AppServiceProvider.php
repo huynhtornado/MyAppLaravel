@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $data['about'] = About::all();
-        $data['contact'] = Contact::all();
+        $data['abouts'] = About::all();
+        $data['contacts'] = Contact::all();
 
         view()->share($data);
     }

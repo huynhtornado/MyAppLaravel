@@ -34,6 +34,19 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getLogin()
+    {       
+        return view('auth.login');
+    }
+
+    public function postLogin() {
+        console.log('');
     }
 }
