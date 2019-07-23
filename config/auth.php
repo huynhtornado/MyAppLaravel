@@ -68,8 +68,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
+            'model' => DemoLaravel\Models\User::class,
         ],
-        'model' => DemoLaravel\Models\User::class,
 
         // 'users' => [
         //     'driver' => 'database',

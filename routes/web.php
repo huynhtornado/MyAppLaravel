@@ -15,9 +15,10 @@ Route::get('/', 'HomeController@index')->name('home');
 
 // Auth::routes();
 
-Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
+//Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
 
-Route::group(['prefix' => 'auth', 'as' => 'auth.', 'namespace' => 'Auth', 'middleware' => 'CheckLogin'], function() {
-    Route::post('/login', 'LoginController@postLogin')->name('loginForm');
+Route::group(['prefix' => 'login', 'namespace' => 'Auth', 'middleware' => 'checklogin'], function() {
+    Route::get('/','LoginController@getLogin');
+    Route::post('/','LoginController@postLogin');
+    //Route::post('/login', 'LoginController@postLogin')->name('loginForm');
 });
-

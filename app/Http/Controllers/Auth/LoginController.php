@@ -5,6 +5,8 @@ namespace DemoLaravel\Http\Controllers\Auth;
 use DemoLaravel\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -42,11 +44,16 @@ class LoginController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function getLogin()
-    {       
-        return view('auth.login');
+    {
+        if (Auth::check()) {
+            // nếu đăng nhập thàng công thì 
+            return redirect('home');
+        } else {
+            return view('auth/login');
+        }
     }
 
     public function postLogin() {
-        console.log('');
+       
     }
 }
