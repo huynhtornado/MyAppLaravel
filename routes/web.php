@@ -14,11 +14,18 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 // Auth::routes();
+Route::group(['namespace' => 'Auth'], function() {
+    Route::group(['prefix' => 'login', 'middleware' => 'checklogin'], function() {
+        Route::get('/','LoginController@index')->name('login');
+        Route::post('/','LoginController@postLogin')->name('postlogin');
+    });
 
-//Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
+    Route::group(['prefix' => 'register', 'middleware' => 'checkregister'], function() {
+        Route::get('/','RegisterController@index')->name('register');
+        Route::post('/','RegisterController@create')->name('register.create');
+    });
 
-Route::group(['prefix' => 'login', 'namespace' => 'Auth', 'middleware' => 'checklogin'], function() {
-    Route::get('/','LoginController@getLogin');
-    Route::post('/','LoginController@postLogin');
-    //Route::post('/login', 'LoginController@postLogin')->name('loginForm');
 });
+
+
+Route::get('logout', 'HomeController@getLogout')->name('logout');

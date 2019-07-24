@@ -14,25 +14,22 @@ class ContactTableSeeder extends Seeder
     {
         $contact = [
             [
-                'id'            => 1,
-                'name'          => 'About',
-                'url'           => 'Follow on Twitter',
+                'name'          => 'Follow on Twitter',
+                'url'           => '',
                 'created_at'    => '2019-06-22 16:05:11',
                 'updated_at'    => '2019-06-22 16:05:11',
                 'deleted_at'    => null,
             ],
             [
-                'id'            => 2,
-                'name'          => 'About',
-                'url'           => 'Like on Facebook',
+                'name'          => 'Like on Facebook',
+                'url'           => '',
                 'created_at'    => '2019-06-22 16:05:11',
                 'updated_at'    => '2019-06-22 16:05:11',
                 'deleted_at'    => null,
             ],
             [
-                'id'            => 3,
-                'name'          => 'About',
-                'url'           => 'Email me',
+                'name'          => 'Email me',
+                'url'           => '',
                 'created_at'    => '2019-06-22 16:05:11',
                 'updated_at'    => '2019-06-22 16:05:11',
                 'deleted_at'    => null,

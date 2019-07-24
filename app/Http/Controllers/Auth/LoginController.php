@@ -5,6 +5,9 @@ namespace DemoLaravel\Http\Controllers\Auth;
 use DemoLaravel\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use DemoLaravel\Http\Requests\LoginRequest;
+use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Input;
 use Auth;
 
 class LoginController extends Controller
@@ -27,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/home';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -43,17 +46,34 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function getLogin()
+    public function index()
     {
         if (Auth::check()) {
-            // nếu đăng nhập thàng công thì 
-            return redirect('home');
+            return redirect('/');
         } else {
             return view('auth/login');
         }
     }
 
-    public function postLogin() {
-       
+    public function postLogin(LoginRequest $request) {
+        $login = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'level' => 1,
+            'status' => 1
+        ];
+        $remember_me = $request->input('remember');
+        $remember = false;
+        if ($remember_me) {
+            $remember = true;
+        }
+        //$credentials = $request->only('email', 'password');
+        if (Auth::attempt($login, $remember)) {
+            return redirect()->intended('/');
+        } else {
+            return redirect()->back()->with('message', 'Email or Password incorrect');
+            //return redirect()->back()->withInput(Input::all(), 'Email or Password incorrect');
+        }
     }
+
 }

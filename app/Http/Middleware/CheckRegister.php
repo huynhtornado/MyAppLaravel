@@ -5,7 +5,7 @@ namespace DemoLaravel\Http\Middleware;
 use Closure;
 use Auth;
 
-class CheckLogin
+class CheckRegister
 {
     /**
      * Handle an incoming request.
@@ -21,12 +21,11 @@ class CheckLogin
             // nếu level =1 (admin), status = 1 (actived) thì cho qua.
             if ($user->level == 1 && $user->status == 1 )
             {
-                return $next($request);
+                return redirect()->route('home');
             }
             else
             {
-                Auth::logout();
-                return redirect()->route('index');
+                return $next($request);
             }
         }
         return $next($request);

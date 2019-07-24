@@ -36,11 +36,23 @@
 			<h1 id="colorlib-logo"><a href="index.html"><span class="flaticon-camera"></span>Capture</a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li class="colorlib-active"><a href="index.html">Home</a></li>
-					<li><a href="gallery.html">Gallery</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					@foreach($menus as $menu)
+						@if($menu->name == "Home")
+							<li class="colorlib-active"><a href="">{{ $menu->name }}</a></li>
+						@else
+							<li><a href="">{{ $menu->name }}</a></li>
+						@endif
+					@endforeach
+
+					@if(Auth::user() && Auth::user()->email)
+						<li><a href="{{ route('logout') }}">{{ trans('global.logout') }}</a></li>
+					@else	
+						<li><a href="{{ route('login') }}">{{ trans('global.login') }}</a></li>
+					@endif
+
+					@if(!Auth::user())
+						<li><a href="{{ route('register') }}">{{ trans('global.register') }}</a></li>
+					@endif
 				</ul>
 			</nav>
 
