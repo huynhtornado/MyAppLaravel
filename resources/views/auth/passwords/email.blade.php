@@ -22,7 +22,7 @@
             <p class="login-box-msg">
                 {{ trans('global.reset_password') }}
             </p>
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('password.email') }}">
                 {{ csrf_field() }}
                 <div>
                     <div class="form-group has-feedback">

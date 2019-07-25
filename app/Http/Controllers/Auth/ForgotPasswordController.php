@@ -50,7 +50,6 @@ class ForgotPasswordController extends Controller
         //$req = Request::all();
 
         $user = User::where($email, $request['email'])->first();
-        $validCredentials = Hash::check($request['password'], $user->getAuthPassword());
 
 
         if ($result) {

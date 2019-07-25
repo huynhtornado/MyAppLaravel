@@ -25,9 +25,11 @@ Route::group(['namespace' => 'Auth'], function() {
         Route::post('/','RegisterController@create')->name('register.create');
     });
 
-    Route::group(['prefix' => 'forgotpassword', 'middleware' => 'forgotpassword'], function() {
-        Route::get('/','ForgotPasswordController@index')->name('forgotpassword.email');
-        Route::post('/','ForgotPasswordController@resetPassword')->name('register.find');
+    Route::group(['prefix' => 'passwordreset', 'middleware' => 'forgotpassword'], function() {
+        Route::get('/','ForgotPasswordController@index')->name('password.reset');
+        Route::post('/','ForgotPasswordController@resetPassword')->name('password.email');
+        // Route::get('/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
+        // Route::post('/', 'ResetPasswordController@reset');
     });
 });
 

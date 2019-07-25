@@ -56,7 +56,7 @@
                 </div>
                 
             </form>
-            <a href="{{ route('forgotpassword.email') }}">
+            <a href="{{ route('password.reset') }}">
                 {{ trans('global.forgot_password')}}
             </a>
             <a href="{{ route('register') }}">
