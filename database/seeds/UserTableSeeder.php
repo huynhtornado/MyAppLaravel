@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
                 'name'          => 'Huỳnh Nhã Tuấn',
                 'email'         => 'huynhnhatuanqnu@gmail.com',
                 'password'      =>  bcrypt('123456'),
-                'Sex'           =>  1,
+                'gender'        =>  "1",
                 'level'         =>  1,
                 'status'        =>  1,
                 'created_at'    => '2019-06-22 16:05:11',

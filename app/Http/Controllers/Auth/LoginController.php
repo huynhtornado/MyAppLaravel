@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use DemoLaravel\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Input;
-use Auth;
+use Auth; //use thư viện auth
 
 class LoginController extends Controller
 {
@@ -58,14 +58,14 @@ class LoginController extends Controller
     public function postLogin(LoginRequest $request) {
         $login = [
             'email' => $request->email,
-            'password' => $request->password,
-            'level' => 1,
-            'status' => 1
+            'password' => $request->password
         ];
-        $remember_me = $request->input('remember');
-        $remember = false;
-        if ($remember_me) {
+        $rememberRequest = $request->remember;
+        $remember_me = trans('global.remember_me');
+        if ($rememberRequest == $remember_me) {
             $remember = true;
+        } else {
+            $remember = false;
         }
         //$credentials = $request->only('email', 'password');
         if (Auth::attempt($login, $remember)) {

@@ -62,7 +62,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'password_confirmation' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -72,13 +71,31 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \DemoLaravel\User
      */
-    protected function create(Request $data)
+    protected function create(Request $request)
     {
-        return User::create([
-            'name' => $data->name,
-            'email' => $data->email,
-            'password' => Hash::make($data->password),
-            'sex_id' => $data->sex_id,
+        //validate the fields...
+        request()->validate([
+            'name' => 'required|min:2|max:50',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|min:6|same:password',
+            // 'phone' => 'required|numeric|digits_between:2,5',
+        ], [
+            'name.required' => 'Name is required',
+            'name.min' => 'Name must be at least 2 characters.',
+            'name.max' => 'Name should not be greater than 50 characters.',
         ]);
+
+        $input = request()->except('password', 'password_confirmation');
+        $user = new User($input);
+
+        $user->password = bcrypt($request->password);
+
+        if ($user) {
+            $user->save();
+            return back()->with('success', 'Registration successful.');
+        } else {
+            return back()->with('message', "Registration failed!!");
+        }        
     }
 }

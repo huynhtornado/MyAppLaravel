@@ -5,7 +5,7 @@ namespace DemoLaravel\Http\Middleware;
 use Closure;
 use Auth;
 
-class CheckRegister
+class ForgotPassword
 {
     /**
      * Handle an incoming request.
@@ -16,18 +16,15 @@ class CheckRegister
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
             $user = Auth::user();
-            // nếu level =1 (admin), status = 1 (actived) thì cho qua.
-            if ($user->email)
-            {
-                return redirect()->route('home');
-            }
-            else
-            {
+            if ($user->email) {
                 return $next($request);
+            } else {
+                return redirect()->route('index');
             }
         }
         return $next($request);
     }
+
 }

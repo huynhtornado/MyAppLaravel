@@ -61,5 +61,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checklogin' => \DemoLaravel\Http\Middleware\CheckLogin::class,
         'checkregister' => \DemoLaravel\Http\Middleware\CheckRegister::class,
+        'forgotpassword' => \DemoLaravel\Http\Middleware\ForgotPassword::class,
     ];
 }

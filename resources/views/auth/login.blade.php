@@ -7,16 +7,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ trans('global.login') }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="login-logo">
+        <div class="login-logo" style="font-size: 500; font-weight: bold;">
             {{ trans('global.title_form') }}
         </div>
         <div class="login-box-body">
-            <p class="login-box-msg">
+            <p class="login-box-msg" style="font-size: 200; font-weight: bold;">
                 {{ trans('global.login') }}
             </p>
             @if(session('message'))
@@ -29,7 +29,7 @@
                 <div class="form-group has-feedback">
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="Email">
                     @if($errors->has('email'))
-                        <p class="help-block">
+                        <p class="help-block" style="color: red;">
                             {{ $errors->first('email') }}
                         </p>
                     @endif
@@ -37,7 +37,7 @@
                 <div class="form-group has-feedback">
                     <input type="password" name="password" class="form-control" value="{{ old('password') }}" placeholder="Password">
                     @if($errors->has('password'))
-                        <p class="help-block">
+                        <p class="help-block" style="color: red;">
                             {{ $errors->first('password') }}
                         </p>
                     @endif
@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox">
-                            <label><input type="checkbox" name="remember[]" value="true">{{ trans('global.remember_me')}}</label>
+                            <label><input type="checkbox" name="remember" value="{{ trans('global.remember_me')}}">{{ trans('global.remember_me')}}</label>
                         </div>
                     </div>
                     <div class="col-xs-4">
@@ -56,10 +56,10 @@
                 </div>
                 
             </form>
-            <a href="">
+            <a href="{{ route('forgotpassword.email') }}">
                 {{ trans('global.forgot_password')}}
             </a>
-            <a href="">
+            <a href="{{ route('register') }}">
                 {{ trans('global.register')}}
             </a>
 
