@@ -14,6 +14,7 @@ class Menu extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
+        'url',
         'created_at',
         'updated_at',
         'deleted_at',

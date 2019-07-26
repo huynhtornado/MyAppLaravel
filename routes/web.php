@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('logout', 'HomeController@getLogout')->name('logout');
+
 // Auth::routes();
 Route::group(['namespace' => 'Auth'], function() {
     Route::group(['prefix' => 'login', 'middleware' => 'checklogin'], function() {
@@ -25,13 +27,17 @@ Route::group(['namespace' => 'Auth'], function() {
         Route::post('/','RegisterController@create')->name('register.create');
     });
 
-    Route::group(['prefix' => 'passwordreset', 'middleware' => 'forgotpassword'], function() {
-        Route::get('/','ForgotPasswordController@index')->name('password.reset');
-        Route::post('/','ForgotPasswordController@resetPassword')->name('password.email');
-        // Route::get('/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
-        // Route::post('/', 'ResetPasswordController@reset');
+    Route::group(['prefix' => 'password', 'middleware' => 'forgotpassword'], function() {
+        Route::get('/reset','ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        Route::post('/email','ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        Route::get('/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+        Route::post('/reset', 'ResetPasswordController@reset')->name('password.resetagain');
     });
 });
 
-
-Route::get('logout', 'HomeController@getLogout')->name('logout');
+// Route for Blog Page
+Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function() {
+    // Route::group(['prefix' => 'login'], function() {
+        Route::get('/', 'BlogController@index')->name('blog');
+    // });
+});

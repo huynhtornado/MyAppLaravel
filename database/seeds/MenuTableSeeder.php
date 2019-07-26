@@ -14,19 +14,24 @@ class MenuTableSeeder extends Seeder
     {
         $menu = [
             [
-                'name'  => 'Home'
+                'name'  =>  'Home',
+                'url'   =>  'http://localhost:8080/myapp/'
             ],
             [
-                'name'  => 'Gallery'
+                'name'  =>  'Gallery',
+                'url'   =>  ''
             ],
             [
-                'name'  => 'About'
+                'name'  =>  'About',
+                'url'   =>  ''
             ],
             [
-                'name'  => 'Blog'
+                'name'  =>  'Blog',
+                'url'   =>  'http://localhost:8080/myapp/blog'
             ],
             [
-                'name'  => 'Contact'
+                'name'  =>  'Contact',
+                'url'   =>  ''
             ]
         ];
 

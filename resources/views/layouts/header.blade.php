@@ -10,37 +10,37 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="public/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="public/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="public/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="public/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="public/css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/css/flaticon.css">
+    <link rel="stylesheet" href="public/css/icomoon.css">
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
     <div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="index.html"><span class="flaticon-camera"></span>Capture</a></h1>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center" style="background-color: #efe1e1 !important;">
+			<h1 id="colorlib-logo"><a href="index.html"><img src="public/images/logo.png" alt="Ngoc Thuy Spa"/></a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					@foreach($menus as $menu)
 						@if($menu->name == "Home")
-							<li class="colorlib-active"><a href="">{{ $menu->name }}</a></li>
+							<li class="colorlib-active"><a href="{{ $menu->url }}">{{ $menu->name }}</a></li>
 						@else
-							<li><a href="">{{ $menu->name }}</a></li>
+							<li><a href="{{ $menu->url }}">{{ $menu->name }}</a></li>
 						@endif
 					@endforeach
 

@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> {{ trans('global.forgot_Password') }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/login.css" rel="stylesheet" />
+    <link href="{{ trans('global.style_login') }}" rel="stylesheet" />
 </head>
 
 <body class="hold-transition login-page">
@@ -20,8 +20,13 @@
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">
-                {{ trans('global.reset_password') }}
+                {{ trans('global.forgot_password') }}
             </p>
+            @if(session('message'))
+                <p class="alert alert-danger">
+                    {{ session('message') }}
+                </p>
+            @endif
             <form method="POST" action="{{ route('password.email') }}">
                 {{ csrf_field() }}
                 <div>
@@ -35,12 +40,9 @@
                         @endif
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
-
-                        </div>
-                        <div class="col-xs-6">
+                        <div class="col-xs-12">
                             <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                {{ trans('global.reset_password') }}
+                                {{ trans('global.send_password_reset_link') }}
                             </button>
                         </div>
                     </div>

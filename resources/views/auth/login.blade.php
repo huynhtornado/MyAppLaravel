@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ trans('global.login') }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/login.css" rel="stylesheet" />
+    <link href="{{ trans('global.style_login') }}" rel="stylesheet" />
 </head>
 
 <body class="hold-transition login-page">
@@ -56,7 +56,7 @@
                 </div>
                 
             </form>
-            <a href="{{ route('password.reset') }}">
+            <a href="{{ route('password.request') }}">
                 {{ trans('global.forgot_password')}}
             </a>
             <a href="{{ route('register') }}">
